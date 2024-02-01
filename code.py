@@ -89,10 +89,10 @@ def anim_brake(cmdargs):
         except ValueError:
             level = 0
         if level == 0:
-            solid = Solid(pxl8, color=(15, 0, 0))
+            solid = Solid(pxl8, color=(0, 255, 0))
             return solid
         elif level == 1:
-            blink = Blink(pxl8, speed=0.1, color=(15, 0, 0))
+            blink = Blink(pxl8, speed=0.1, color=(0, 255, 0))
             return blink
     return None
 
@@ -103,10 +103,10 @@ def anim_reverse(cmdargs):
         except ValueError:
             level = 0
         if level == 0:
-            solid = Solid(pxl8, color=(15, 15, 15))
+            solid = Solid(pxl8, color=(255, 255, 255))
             return solid
         elif level == 1:
-            blink = Blink(pxl8, speed=0.5, color=(15, 15, 15))
+            blink = Blink(pxl8, speed=0.5, color=(255, 255, 255))
             return blink
     return None
 
