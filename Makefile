@@ -29,7 +29,7 @@
 # of this writing. And micropython does not automatically mount a drive to
 # expose the filesystem.
 
-APP_FILES=cmdparser.py ws2812_pio.py
+APP_FILES=console_std.py cmdparser.py ws2812_pio.py
 
 BUILD_DIR=build
 
@@ -59,6 +59,7 @@ help:
 	@echo "clean       - clean repo of all intermediate products"
 	@echo ""
 	@echo "testpico_ws2812 - run ws2812 driver test on attached pico"
+	@echo "testpico_console- run a console IO test on the target"
 	@echo ""
 	@echo "venv        - create python virtual env (automatic when needed)"
 	@echo "cleanvenv   - clean the python venv"
@@ -108,6 +109,19 @@ test:
 .PHONY: testpico_ws2812
 testpico_ws2812: |venv deploy
 	venv/bin/mpremote run tests/pico_test_ws2812_pio.py
+
+# This one must be run by hand on the target using a terminal. The reason is
+# that the repl used for "run" is what we are testing.
+# To run this after the copy below and the terminal is opened, do:
+#     import test_pic_console_std
+#
+# and the test should run
+#
+.PHONY: testpico_console
+testpico_console: |venv deploy
+	venv/bin/mpremote cp tests/pico_test_console_std.py :
+	@echo "In the REPL, 'import pico_test_console_std' and the test should run"
+	venv/bin/mpremote repl
 
 .PHONY: clean
 clean:
