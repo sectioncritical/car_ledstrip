@@ -14,6 +14,11 @@
 
 # This test driver is meant to run on the pico. It will import the console_std
 # module. It uses the write and read function to interact with the user.
+#
+# To test this on a micropython board this file and the console_std (module
+# under test) should be copied to the board. Then use the REPL to import this
+# file and the test will run. There should be a make target to take care of
+# all this so check the project Makefile.
 
 import time
 from console_std import *

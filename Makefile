@@ -29,7 +29,7 @@
 # of this writing. And micropython does not automatically mount a drive to
 # expose the filesystem.
 
-APP_FILES=console_std.py cmdparser.py ws2812_pio.py
+APP_FILES=console_std.py cmdif.py cmdparser.py ws2812_pio.py main.py
 
 BUILD_DIR=build
 
@@ -103,7 +103,7 @@ terminal: venv
 # uses python builtin unittest module, so does not require venv
 .PHONY: test
 test:
-	python3 -m unittest -v tests.test_cmdparser
+	python3 -m unittest -v tests.test_cmdparser tests.test_cmdif
 
 # run the target based test
 .PHONY: testpico_ws2812
